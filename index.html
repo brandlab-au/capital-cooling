@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capital Cooling Solutions | Premium Climate Control</title>
+    <!-- Google Fonts: Inter for clean, modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <span class="logo-accent">CCS</span>
+                <span class="logo-text">Capital Cooling Solutions</span>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="nav" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <a href="tel:+18005551234" class="btn btn-nav mobile-only">Call Us: (800) 555-1234</a>
+            </nav>
+
+            <!-- Desktop Phone CTA -->
+            <a href="tel:+18005551234" class="btn btn-nav desktop-only">Call Us: (800) 555-1234</a>
+
+            <!-- Mobile Menu Toggle -->
+            <div class="menu-toggle" id="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <!-- Spinning Background SVG -->
+        <div class="hero-bg">
+            <svg class="turbine-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Abstract simple turbine blade shapes -->
+                <path d="M50 50 L50 0 C65 0 80 15 80 30 Z" fill="rgba(14, 165, 233, 0.05)" />
+                <path d="M50 50 L100 50 C100 65 85 80 70 80 Z" fill="rgba(14, 165, 233, 0.05)" />
+                <path d="M50 50 L50 100 C35 100 20 85 20 70 Z" fill="rgba(14, 165, 233, 0.05)" />
+                <path d="M50 50 L0 50 C0 35 15 20 30 20 Z" fill="rgba(14, 165, 233, 0.05)" />
+                <circle cx="50" cy="50" r="8" fill="rgba(14, 165, 233, 0.08)" />
+            </svg>
+        </div>
+
+        <div class="container hero-content">
+            <h1 class="hero-headline">Precision Climate Control for Modern Spaces</h1>
+            <p class="hero-subheadline">Experience unparalleled reliability, efficiency, and comfort with our premium commercial and residential HVAC solutions.</p>
+            <a href="#contact" class="btn btn-hero">Request a Free Quote</a>
+
+            <!-- Video Placeholder -->
+            <div class="hero-video-wrapper">
+                <video class="hero-video" controls poster="https://via.placeholder.com/1108x828/0f172a/ffffff?text=Video+Placeholder+(1108x828)">
+                    <!-- Add source tags here when video is ready -->
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section-padding" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Premium Services</h2>
+
+            <div class="services-grid">
+                <!-- Service Card 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Commercial HVAC</h3>
+                    <p class="service-desc">Scalable, high-efficiency climate solutions designed for modern office buildings, retail spaces, and industrial complexes.</p>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Residential Installation</h3>
+                    <p class="service-desc">Precision-engineered residential systems offering whisper-quiet operation and perfect temperature control for your home.</p>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Smart Maintenance</h3>
+                    <p class="service-desc">Proactive, tech-driven maintenance plans that prevent downtime, optimize energy usage, and extend equipment lifespan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section: The CCS Standard -->
+    <section class="about section-padding" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2 class="section-title" style="text-align: left;">The CCS Standard</h2>
+                    <p class="about-text">At Capital Cooling Solutions, we don't just install air conditioning—we engineer precise climate environments. With over two decades of combined experience, our technicians bring unparalleled professionalism to every job.</p>
+                    <p class="about-text">From rapid emergency response times to meticulous smart-system calibrations, we set the standard for premium HVAC services in modern spaces.</p>
+
+                    <ul class="about-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            24/7 Rapid Emergency Response
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Licensed & Insured Master Technicians
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Transparent, Upfront Pricing
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="about-image">
+                    <!-- Placeholder for a premium team or equipment shot -->
+                    <img src="https://via.placeholder.com/600x400/0f172a/ffffff?text=Premium+HVAC+Installation" alt="Capital Cooling Solutions Technicians">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section-padding" id="contact">
+        <div class="container">
+            <h2 class="section-title">Request a Free Quote</h2>
+
+            <div class="contact-wrapper">
+                <form class="contact-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="(555) 123-4567" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service" class="form-label">Service Required</label>
+                        <select id="service" name="service" class="form-input" required>
+                            <option value="" disabled selected>Select a service...</option>
+                            <option value="commercial">Commercial HVAC</option>
+                            <option value="residential">Residential Installation</option>
+                            <option value="maintenance">Smart Maintenance</option>
+                            <option value="emergency">Emergency Repair</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" class="form-label">Project Details / Message</label>
+                        <textarea id="message" name="message" class="form-input" rows="5" placeholder="Tell us about your climate control needs..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo footer-logo">
+                        <span class="logo-accent">CCS</span>
+                        <span class="logo-text" style="color: white;">Capital Cooling Solutions</span>
+                    </a>
+                    <p class="footer-text">Precision climate control for modern commercial and residential spaces.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Contact Info</h4>
+                    <ul class="footer-links">
+                        <li>(800) 555-1234</li>
+                        <li>info@capitalcoolingsolutions.com</li>
+                        <li>123 Climate Ave, Suite 100<br>Metropolis, NY 10001</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Capital Cooling Solutions. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('header');
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            // 1. Sticky Header Scroll Effect
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // 2. Mobile Menu Toggle
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // 3. Close mobile menu on link click
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // 4. Smooth Scrolling (Fallback/Enhancement for older browsers)
+            // Note: html { scroll-behavior: smooth; } handles most modern browsers natively
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        const headerOffset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
