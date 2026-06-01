@@ -2,3 +2,6 @@
 127.0.0.1 - - [01/Jun/2026 17:53:19] "GET /style.css HTTP/1.1" 200 -
 127.0.0.1 - - [01/Jun/2026 17:53:33] "GET /index.html HTTP/1.1" 200 -
 127.0.0.1 - - [01/Jun/2026 17:53:33] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jun/2026 18:53:49] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jun/2026 18:53:49] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jun/2026 18:53:49] "GET /promo-video.mp4 HTTP/1.1" 200 -
