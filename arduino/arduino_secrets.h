@@ -3,4 +3,4 @@
 #define SECRET_PASS ""
 
 #define SECRET_MQTT_USER "mqtt_user"
-#define SECRET_MQTT_PASS "mqtt_pass"
+#define SECRET_MQTT_PASS ""
