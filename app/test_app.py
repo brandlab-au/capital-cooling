@@ -13,7 +13,7 @@ class AppTestCase(unittest.TestCase):
         with app.app_context():
             db.create_all()
             user = User(username='testadmin')
-            user.set_password('testpass')
+            user.set_password('dummy_test_pass')
             db.session.add(user)
             db.session.commit()
 
@@ -25,7 +25,7 @@ class AppTestCase(unittest.TestCase):
     def test_login_logout(self):
         rv = self.client.post('/login', data=dict(
             username='testadmin',
-            password='testpass'
+            password='dummy_test_pass'
         ), follow_redirects=True)
         self.assertIn(b'Dashboard', rv.data)
 

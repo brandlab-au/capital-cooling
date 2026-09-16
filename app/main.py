@@ -14,7 +14,7 @@ from app.models import db, User
 load_dotenv()
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'fallback_secret_key')
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', '')
 db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'capital_cooling.db')
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

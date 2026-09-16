@@ -21,7 +21,7 @@ def init_db():
 
         # Check if admin exists
         admin_username = os.environ.get('ADMIN_USERNAME', 'admin')
-        admin_password = os.environ.get('ADMIN_PASSWORD', 'admin_change_me')
+        admin_password = os.environ.get('ADMIN_PASSWORD', '')
 
         admin_user = User.query.filter_by(username=admin_username).first()
         if not admin_user:
