@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capital Cooling - Dashboard</title>
+    <style>
+        :root {
+            --bg: #f4f4f9;
+            --card-bg: #ffffff;
+            --text: #333;
+            --primary: #007bff;
+            --primary-hover: #0056b3;
+            --success: #28a745;
+            --danger: #dc3545;
+            --border: #e0e0e0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .logout-btn {
+            text-decoration: none;
+            color: var(--danger);
+            font-weight: bold;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        @media (min-width: 600px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 1px solid var(--border);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: white;
+            background-color: var(--danger);
+        }
+
+        .status-badge.online {
+            background-color: var(--success);
+        }
+
+        .action-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .telemetry-data {
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+
+        .telemetry-value {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Capital Cooling Control Panel</h1>
+        <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+    </div>
+
+    <div class="dashboard-grid">
+        <!-- Device Status -->
+        <div class="card">
+            <h2>Device Status</h2>
+            <p>Connection: <span id="conn-status" class="status-badge">Offline</span></p>
+            <p id="ping-readout">Ping Latency: -- ms</p>
+        </div>
+
+        <!-- Telemetry -->
+        <div class="card">
+            <h2>Telemetry</h2>
+            <div class="telemetry-data">
+                Temperature (A0): <br>
+                <span id="temp-readout" class="telemetry-value">-- °C</span>
+            </div>
+        </div>
+
+        <!-- Action Deck -->
+        <div class="card" style="grid-column: 1 / -1;">
+            <h2>Action Deck</h2>
+
+            <div class="action-group" style="flex-direction: row; gap: 15px; flex-wrap: wrap;">
+                <button onclick="sendAction('/api/command/ping')">Ping Arduino</button>
+                <button onclick="sendAction('/api/command/read_sensors')">Read Temperature Now</button>
+                <button style="background-color: #6c757d;">Calibrate Zero (Hook)</button>
+                <button style="background-color: var(--danger);">Emergency Stop (Hook)</button>
+            </div>
+
+            <div class="slider-container" style="margin-top: 20px;">
+                <label for="pwm-slider">Actuator Control (PWM 0-255): <span id="pwm-val-display">0</span></label>
+                <input type="range" id="pwm-slider" min="0" max="255" value="0" onchange="sendPWM(this.value)" oninput="document.getElementById('pwm-val-display').innerText = this.value">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function sendAction(endpoint) {
+            try {
+                const res = await fetch(endpoint, { method: 'POST' });
+                if (!res.ok) console.error("Action failed", res);
+            } catch (e) {
+                console.error("Error sending action", e);
+            }
+        }
+
+        async function sendPWM(val) {
+            try {
+                const res = await fetch('/api/command/pwm', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ value: parseInt(val) })
+                });
+                if (!res.ok) console.error("PWM action failed", res);
+            } catch (e) {
+                console.error("Error sending PWM", e);
+            }
+        }
+
+        // Poll telemetry data every 2 seconds
+        async function fetchTelemetry() {
+            try {
+                const res = await fetch('/api/telemetry');
+                if (res.ok) {
+                    const data = await res.json();
+
+                    const statusBadge = document.getElementById('conn-status');
+                    if (data.status === 'online') {
+                        statusBadge.textContent = 'Online';
+                        statusBadge.classList.add('online');
+                    } else {
+                        statusBadge.textContent = 'Offline';
+                        statusBadge.classList.remove('online');
+                    }
+
+                    if (data.ping_latency_ms !== null) {
+                        document.getElementById('ping-readout').textContent = `Ping Latency: ${data.ping_latency_ms} ms`;
+                    }
+
+                    if (data.temp_c !== null) {
+                        document.getElementById('temp-readout').textContent = `${data.temp_c} °C`;
+                    }
+                }
+            } catch (e) {
+                console.error("Error fetching telemetry", e);
+            }
+        }
+
+        setInterval(fetchTelemetry, 2000);
+        fetchTelemetry(); // initial fetch
+    </script>
+</body>
+</html>

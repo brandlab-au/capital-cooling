@@ -1,0 +1,16 @@
+[Unit]
+Description=Gunicorn instance to serve Capital Cooling Platform
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/capital-cooling
+Environment="PATH=/var/www/capital-cooling/venv/bin"
+# Run Gunicorn binding to localhost port 5000
+# Note: Workers set to 1 because state (telemetry/ping) is stored in-memory.
+# For multiple workers, migrate state to Redis.
+ExecStart=/var/www/capital-cooling/venv/bin/gunicorn --workers 1 --bind 127.0.0.1:5000 -m 007 app.main:app
+
+[Install]
+WantedBy=multi-user.target
