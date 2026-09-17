@@ -122,10 +122,13 @@ img, video {
 }
 
 .header-container {
+    height: 72px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    height: 80px;
+    padding: 0 32px;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    gap: 32px;
 }
 
 /* Logo */
@@ -133,6 +136,7 @@ img, video {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    white-space: nowrap;
 }
 
 .logo-accent {
@@ -143,8 +147,9 @@ img, video {
 }
 
 .logo-text {
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.25rem;
+    font-weight: 700;
+    white-space: nowrap;
     color: var(--color-slate-dark);
     display: none; /* Hidden on very small screens by default */
 }
@@ -158,8 +163,13 @@ img, video {
 /* Navigation Menu */
 .nav-list {
     display: flex;
-    gap: 2rem;
+    gap: 24px;
     align-items: center;
+}
+
+.nav-item {
+    position: relative;
+    white-space: nowrap;
 }
 
 .nav-link {
@@ -168,6 +178,41 @@ img, video {
     color: var(--color-slate-medium);
     transition: var(--transition);
     position: relative;
+    white-space: nowrap;
+}
+
+.dropdown-toggle {
+    white-space: nowrap;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--color-white);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 0.5rem 0;
+    z-index: 1000;
+    min-width: 200px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 0.5rem 1.5rem;
+    color: var(--color-slate-medium);
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.dropdown-item:hover {
+    background-color: var(--color-bg-light);
+    color: var(--color-ice-blue);
 }
 
 .nav-link::after {
@@ -192,6 +237,34 @@ img, video {
 .btn-nav {
     padding: 0.6rem 1.2rem;
     font-size: 0.95rem;
+}
+
+.header-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.btn-compact {
+    height: 40px;
+    padding: 0 18px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.btn-dark {
+    background-color: var(--color-slate-dark);
+    color: var(--color-white);
+}
+
+.btn-dark:hover {
+    background-color: var(--color-slate-medium);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
 }
 
 .mobile-only {

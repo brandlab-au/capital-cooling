@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
@@ -16,23 +16,41 @@
     <header class="header" id="header">
         <div class="container header-container">
             <!-- Logo -->
-            <a href="#" class="logo">
+            <a href="/" class="logo">
                 <span class="logo-accent">CCS</span>
-                <span class="logo-text">Capital Cooling Solutions</span>
+                <span class="logo-text">CC Systems</span>
             </a>
 
             <!-- Navigation Links -->
             <nav class="nav" id="nav-menu">
                 <ul class="nav-list">
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Cooling Systems ▼</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">Split Systems</a></li>
+                            <li><a href="#" class="dropdown-item">Water-Cooled</a></li>
+                            <li><a href="#" class="dropdown-item">Internal Recirculating</a></li>
+                            <li><a href="#" class="dropdown-item">Portable</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Building & Access Systems ▼</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">Door Access</a></li>
+                            <li><a href="#" class="dropdown-item">Telecoms Upgrades</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
-                <a href="tel:+18005551234" class="btn btn-nav mobile-only">Call Us: (800) 555-1234</a>
             </nav>
 
-            <!-- Desktop Phone CTA -->
-            <a href="tel:+18005551234" class="btn btn-nav desktop-only">Call Us: (800) 555-1234</a>
+            <!-- Far-Right Action Cluster -->
+            <div class="header-actions desktop-only">
+                <span class="nav-phone" style="font-weight: 600; color: #1e293b; letter-spacing: 0.5px;">07999 416163</span>
+                <a href="#contact" class="btn btn-compact">Call</a>
+                <a href="/login" class="btn btn-compact btn-dark">Portal Login</a>
+            </div>
 
             <!-- Mobile Menu Toggle -->
             <div class="menu-toggle" id="menu-toggle">
