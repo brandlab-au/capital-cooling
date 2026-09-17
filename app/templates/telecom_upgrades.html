@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Building Communications | CCS Controls{% endblock %}
+{% block content %}
+<section class="section-padding">
+    <div class="container">
+        <h1 class="section-title">Building Communications Infrastructure</h1>
+        <p class="section-desc">High-throughput structured cabling, in-building backbone networks, and modernized riser communications.</p>
+
+        <div class="about-grid" style="margin-top: 3rem;">
+            <div class="about-content">
+                <h3>Advanced Telecommunications Infrastructure</h3>
+                <p>We provide end-to-end upgrades for building communication systems, ensuring high-capacity, reliable networking for modern demands.</p>
+                <ul class="about-list">
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> IP Intercoms & Access Control Networks</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> High-Capacity Structured Cabling (Cat6A/Fiber)</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Internal Network Backbones & Risers</li>
+                </ul>
+                <a href="{{ url_for('index') }}#contact" class="btn btn-primary" style="margin-top: 1.5rem;">Request Consultation</a>
+            </div>
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='img/telecom.svg') }}" alt="Telecommunications Infrastructure">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

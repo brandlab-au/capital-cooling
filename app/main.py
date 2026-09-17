@@ -14,7 +14,7 @@ from app.models import db, User
 load_dotenv()
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', '')
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'test_key')
 db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'capital_cooling.db')
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -86,11 +86,50 @@ except Exception as e:
 
 
 # --- Routes ---
+# --- Public Website Routes ---
+
 @app.route('/')
 def index():
-    if current_user.is_authenticated:
-        return redirect(url_for('dashboard'))
-    return redirect(url_for('login'))
+    return render_template('index.html')
+
+@app.route('/cooling/split-systems')
+def split_systems():
+    return render_template('split_systems.html')
+
+@app.route('/cooling/water-cooled')
+def water_cooled():
+    return render_template('water_cooled.html')
+
+@app.route('/cooling/internal-recirculating')
+def internal_recirculating():
+    return render_template('internal_recirculating.html')
+
+@app.route('/cooling/portable-window-clip')
+def portable_window_clip():
+    return render_template('portable_window_clip.html')
+
+@app.route('/controls/knx-automation')
+def knx_automation():
+    return render_template('knx_automation.html')
+
+@app.route('/controls/door-access')
+def door_access():
+    return render_template('door_access.html')
+
+@app.route('/controls/telecom-upgrades')
+def telecom_upgrades():
+    return render_template('telecom_upgrades.html')
+
+@app.route('/api/alerts/inbound', methods=['POST'])
+def webhook_inbound():
+    data = None
+    if request.is_json:
+        data = request.json
+    else:
+        data = request.form.to_dict()
+
+    print(f"Received inbound webhook payload: {data}")
+    return jsonify({"status": "received"}), 200
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

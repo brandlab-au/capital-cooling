@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Door Access & Intercom | CCS Controls{% endblock %}
+{% block content %}
+<section class="section-padding">
+    <div class="container">
+        <h1 class="section-title">Door Access & Intercom Integration</h1>
+        <p class="section-desc">Flat and building door release integration, digital strikes, IP video intercoms, and remote gate access managed alongside HVAC controls.</p>
+
+        <div class="about-grid" style="margin-top: 3rem;">
+            <div class="about-content">
+                <h3>Secure & Seamless Entry</h3>
+                <p>We provide unified access control solutions that integrate seamlessly with your building management systems, enhancing security and convenience.</p>
+                <ul class="about-list">
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> IP Video Intercom Systems</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Remote Gate & Door Release</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Integration with HVAC and Lighting</li>
+                </ul>
+                <a href="{{ url_for('index') }}#contact" class="btn btn-primary" style="margin-top: 1.5rem;">Request Consultation</a>
+            </div>
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='img/door-access.svg') }}" alt="Door Access and Intercom">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

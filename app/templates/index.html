@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <!-- Spinning Background SVG -->
+        <div class="hero-bg">
+            <svg class="turbine-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Outer Ring -->
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#e2e8f0" stroke-width="2" opacity="0.2"/>
+
+                <!-- Blades Group -->
+                <g class="blades" transform="translate(50 50)">
+                    <!-- Blade 1 -->
+                    <path d="M 0,-10 C 10,-20 20,-40 0,-45 C -20,-40 -10,-20 0,-10 Z" fill="#94a3b8" opacity="0.1"/>
+                    <!-- Blade 2 -->
+                    <path d="M 0,-10 C 10,-20 20,-40 0,-45 C -20,-40 -10,-20 0,-10 Z" fill="#94a3b8" opacity="0.1" transform="rotate(120)"/>
+                    <!-- Blade 3 -->
+                    <path d="M 0,-10 C 10,-20 20,-40 0,-45 C -20,-40 -10,-20 0,-10 Z" fill="#94a3b8" opacity="0.1" transform="rotate(240)"/>
+                </g>
+
+                <!-- Center Hub -->
+                <circle cx="50" cy="50" r="10" fill="#e2e8f0" opacity="0.3"/>
+            </svg>
+        </div>
+
+        <div class="container hero-container">
+            <div class="hero-content">
+                <span class="badge">Next-Generation Cooling</span>
+                <h1 class="hero-title">Precision Climate Control for Modern Spaces</h1>
+                <p class="hero-subtitle">Engineering high-efficiency, sustainable HVAC solutions for commercial and residential applications. Smart technology meets unmatched reliability.</p>
+
+                <div class="hero-cta-group">
+                    <a href="#contact" class="btn btn-primary">Get a Free Survey</a>
+                    <a href="#services" class="btn btn-secondary">Explore Solutions</a>
+                </div>
+
+                <div class="trust-indicators">
+                    <div class="trust-item">
+                        <strong>24/7</strong>
+                        <span>Support</span>
+                    </div>
+                    <div class="trust-item">
+                        <strong>15+</strong>
+                        <span>Years Exp.</span>
+                    </div>
+                    <div class="trust-item">
+                        <strong>A++</strong>
+                        <span>Efficiency</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-video-wrapper">
+                <!-- Using a silent, looping MP4 video for high-end feel -->
+                <video class="hero-video" autoplay loop muted playsinline poster="https://via.placeholder.com/800x600/0f172a/ffffff?text=Video+Loading...">
+                    <source src="{{ url_for('static', filename='promo-video.mp4') }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview Section -->
+    <section class="services section-padding" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Comprehensive HVAC Solutions</h2>
+                <p class="section-desc">From initial design and precise installation to proactive smart maintenance, we cover every aspect of your climate control needs.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service Card 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <!-- Icon: Building/Commercial -->
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg>
+                    </div>
+                    <h3 class="service-title">Commercial Systems</h3>
+                    <p class="service-text">Robust, scalable VRF and chilled water systems designed for office blocks, retail spaces, and industrial environments.</p>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <!-- Icon: Home/Residential -->
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    </div>
+                    <h3 class="service-title">Residential Cooling</h3>
+                    <p class="service-text">Whisper-quiet, aesthetically pleasing multi-split systems that integrate seamlessly into your luxury home.</p>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <!-- Icon: Smart/IoT -->
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                    </div>
+                    <h3 class="service-title">Smart Integration (IoT)</h3>
+                    <p class="service-text">Advanced telemetry and cloud-based control. Monitor and adjust your climate remotely for ultimate energy efficiency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section-padding" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2 class="section-title" style="text-align: left;">Setting the Standard in Climate Engineering</h2>
+                    <p>At Capital Cooling & Control Systems, we don't just install air conditioning units; we engineer comprehensive environmental systems.</p>
+                    <p>With over a decade of expertise, our certified technicians ensure that every project—whether a single residential room or a massive commercial complex—benefits from the latest in thermodynamic technology and smart energy management.</p>
+
+                    <ul class="about-list">
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Bespoke System Design &amp; Calculation
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            F-Gas Certified Professional Installation
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Preventative Maintenance Contracts
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="about-image">
+                    <!-- Placeholder for a premium team or equipment shot -->
+                    <img src="https://via.placeholder.com/600x400/0f172a/ffffff?text=Premium+HVAC+Installation" alt="Capital Cooling & Control Systems Technicians">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section-padding" id="contact">
+        <div class="container">
+            <h2 class="section-title">Request a Free Quote</h2>
+
+            <div class="contact-wrapper">
+                <form class="contact-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="(555) 123-4567" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service" class="form-label">Service Required</label>
+                        <select id="service" name="service" class="form-input" required>
+                            <option value="" disabled selected>Select a service...</option>
+                            <option value="commercial">Commercial HVAC</option>
+                            <option value="residential">Residential Installation</option>
+                            <option value="maintenance">Smart Maintenance</option>
+                            <option value="emergency">Emergency Repair</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" class="form-label">Project Details / Message</label>
+                        <textarea id="message" name="message" class="form-input" rows="5" placeholder="Tell us about your climate control needs..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}

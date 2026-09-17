@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Window-Mount Portable | CCS Cooling{% endblock %}
+{% block content %}
+<section class="section-padding">
+    <div class="container">
+        <h1 class="section-title">Window-Mount Portable Units</h1>
+        <p class="section-desc">Rapid-deployment portable units utilizing exterior window-clip heat exchange attachments.</p>
+
+        <div class="about-grid" style="margin-top: 3rem;">
+            <div class="about-content">
+                <h3>Flexible & Powerful Cooling</h3>
+                <p>Need immediate climate control without heavy installation? These split-portable units utilize an external window-clip heat-exchanger to deliver true AC performance, unlike standard single-hose portables.</p>
+                <ul class="about-list">
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> True Refrigerant Split Performance</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Quick & Non-Destructive Installation</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Easy to Relocate</li>
+                </ul>
+                <a href="{{ url_for('index') }}#contact" class="btn btn-primary" style="margin-top: 1.5rem;">Request Consultation</a>
+            </div>
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='img/portable-window.svg') }}" alt="Window-Mount Portable Units">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

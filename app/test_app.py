@@ -40,5 +40,31 @@ class AppTestCase(unittest.TestCase):
         rv = self.client.post('/api/command/ping')
         self.assertEqual(rv.status_code, 302)
 
+    def test_public_pages(self):
+        pages = [
+            '/',
+            '/cooling/split-systems',
+            '/cooling/water-cooled',
+            '/cooling/internal-recirculating',
+            '/cooling/portable-window-clip',
+            '/controls/knx-automation',
+            '/controls/door-access',
+            '/controls/telecom-upgrades'
+        ]
+        for page in pages:
+            rv = self.client.get(page)
+            self.assertEqual(rv.status_code, 200, f"Page {page} failed to load.")
+            self.assertIn(b"Portal Login", rv.data, f"Page {page} missing Portal Login link.")
+
+    def test_webhook_inbound_json(self):
+        rv = self.client.post('/api/alerts/inbound', json={"message": "Test alert"})
+        self.assertEqual(rv.status_code, 200)
+        self.assertEqual(json.loads(rv.data), {"status": "received"})
+
+    def test_webhook_inbound_form(self):
+        rv = self.client.post('/api/alerts/inbound', data={"Body": "Form alert", "From": "123"})
+        self.assertEqual(rv.status_code, 200)
+        self.assertEqual(json.loads(rv.data), {"status": "received"})
+
 if __name__ == '__main__':
     unittest.main()
