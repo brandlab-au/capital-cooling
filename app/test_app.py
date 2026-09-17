@@ -47,7 +47,6 @@ class AppTestCase(unittest.TestCase):
             '/cooling/water-cooled',
             '/cooling/internal-recirculating',
             '/cooling/portable-window-clip',
-            '/controls/knx-automation',
             '/controls/door-access',
             '/controls/telecom-upgrades'
         ]

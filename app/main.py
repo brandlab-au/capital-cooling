@@ -108,10 +108,6 @@ def internal_recirculating():
 def portable_window_clip():
     return render_template('portable_window_clip.html')
 
-@app.route('/controls/knx-automation')
-def knx_automation():
-    return render_template('knx_automation.html')
-
 @app.route('/controls/door-access')
 def door_access():
     return render_template('door_access.html')
