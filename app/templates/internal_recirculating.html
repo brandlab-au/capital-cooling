@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Internal Zero-Water-Loss | CCS Cooling{% endblock %}
+{% block content %}
+<section class="section-padding">
+    <div class="container">
+        <h1 class="section-title">Internal Zero-Water-Loss Systems</h1>
+        <p class="section-desc">Internal condensing systems engineered to eliminate continuous mains drainage and prevent water wastage.</p>
+
+        <div class="about-grid" style="margin-top: 3rem;">
+            <div class="about-content">
+                <h3>Sustainable Internal Cooling</h3>
+                <p>Unlike traditional water-cooled units that constantly drain mains water, our zero-water-loss systems recirculate and manage thermal transfer efficiently entirely indoors.</p>
+                <ul class="about-list">
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Zero Continuous Mains Drainage</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Highly Sustainable & Eco-Friendly</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Compact Footprint</li>
+                </ul>
+                <a href="{{ url_for('index') }}#contact" class="btn btn-primary" style="margin-top: 1.5rem;">Request Consultation</a>
+            </div>
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='img/internal-recirculating.svg') }}" alt="Internal Zero-Water-Loss Systems">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

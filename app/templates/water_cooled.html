@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Water-Cooled Systems | CCS Cooling{% endblock %}
+{% block content %}
+<section class="section-padding">
+    <div class="container">
+        <h1 class="section-title">Water-Cooled Systems</h1>
+        <p class="section-desc">Internal condenser water loop systems tailored for restricted residential buildings with no outdoor condenser space.</p>
+
+        <div class="about-grid" style="margin-top: 3rem;">
+            <div class="about-content">
+                <h3>No Outdoor Unit Required</h3>
+                <p>Perfect for listed buildings, apartments, and commercial units where outdoor condenser space is prohibited or unavailable. These systems utilize a mains condenser water loop.</p>
+                <ul class="about-list">
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Compliant with Strict Planning Permissions</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> High Performance Heat Exchange</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Concealed Internal Installation</li>
+                </ul>
+                <a href="{{ url_for('index') }}#contact" class="btn btn-primary" style="margin-top: 1.5rem;">Request Consultation</a>
+            </div>
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='img/water-cooled.svg') }}" alt="Water Cooled Systems">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

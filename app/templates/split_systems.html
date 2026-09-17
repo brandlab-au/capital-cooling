@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Split Systems | CCS Cooling{% endblock %}
+{% block content %}
+<section class="section-padding">
+    <div class="container">
+        <h1 class="section-title">Split Systems</h1>
+        <p class="section-desc">High-efficiency fixed split and multi-split climate installations.</p>
+
+        <div class="about-grid" style="margin-top: 3rem;">
+            <div class="about-content">
+                <h3>Whisper-Quiet, High-Efficiency Cooling</h3>
+                <p>Ideal for both residential and commercial spaces, our split and multi-split systems offer unparalleled climate control with A++ efficiency ratings.</p>
+                <ul class="about-list">
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Single & Multi-Split Configurations</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Inverter Technology for Energy Savings</li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Rapid Cooling & Heating Modes</li>
+                </ul>
+                <a href="{{ url_for('index') }}#contact" class="btn btn-primary" style="margin-top: 1.5rem;">Request Consultation</a>
+            </div>
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='img/split-systems.svg') }}" alt="Split Systems">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
