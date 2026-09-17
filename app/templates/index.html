@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
@@ -16,23 +16,41 @@
     <header class="header" id="header">
         <div class="container header-container">
             <!-- Logo -->
-            <a href="#" class="logo">
+            <a href="/" class="logo">
                 <span class="logo-accent">CCS</span>
-                <span class="logo-text">Capital Cooling Solutions</span>
+                <span class="logo-text">CC Systems</span>
             </a>
 
             <!-- Navigation Links -->
             <nav class="nav" id="nav-menu">
                 <ul class="nav-list">
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Cooling Systems ▼</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#split-systems" class="dropdown-item">Split Systems</a></li>
+                            <li><a href="#water-cooled" class="dropdown-item">Water-Cooled</a></li>
+                            <li><a href="#recirculating" class="dropdown-item">Internal Recirculating</a></li>
+                            <li><a href="#portable" class="dropdown-item">Portable</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Building & Access Systems ▼</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#door-access" class="dropdown-item">Door Access</a></li>
+                            <li><a href="#telecoms" class="dropdown-item">Telecoms Upgrades</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
-                <a href="tel:+18005551234" class="btn btn-nav mobile-only">Call Us: (800) 555-1234</a>
             </nav>
 
-            <!-- Desktop Phone CTA -->
-            <a href="tel:+18005551234" class="btn btn-nav desktop-only">Call Us: (800) 555-1234</a>
+            <!-- Far-Right Action Cluster -->
+            <div class="header-actions desktop-only">
+                <span class="nav-phone" style="font-weight: 600; color: #1e293b; letter-spacing: 0.5px;">07999 416163</span>
+                <a href="#contact" class="btn btn-compact">Call</a>
+                <a href="/login" class="btn btn-compact btn-dark">Portal Login</a>
+            </div>
 
             <!-- Mobile Menu Toggle -->
             <div class="menu-toggle" id="menu-toggle">
@@ -77,40 +95,63 @@
         <div class="container">
             <h2 class="section-title">Our Premium Services</h2>
 
-            <div class="services-grid">
-                <!-- Service Card 1 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                        </svg>
+            <h3 style="text-align: center; margin-bottom: 2rem; color: var(--color-slate-dark);">Cooling Solutions</h3>
+            <div class="services-grid" style="margin-top: 0; margin-bottom: 4rem;">
+                <div class="service-card" id="split-systems">
+                    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80" alt="Split Systems">
+                    <div class="service-card-body">
+                        <h3 class="service-title">Split Systems</h3>
+                        <p class="service-desc">High-efficiency single and multi-split cooling systems for server rooms, commercial offices, and retail suites. Features whisper-quiet inverter compressors and zoning controls.</p>
+                        <a href="#contact" class="btn btn-compact" style="margin-top: 1rem; display: inline-block;">Inquire</a>
                     </div>
-                    <h3 class="service-title">Commercial HVAC</h3>
-                    <p class="service-desc">Scalable, high-efficiency climate solutions designed for modern office buildings, retail spaces, and industrial complexes.</p>
                 </div>
 
-                <!-- Service Card 2 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                        </svg>
+                <div class="service-card" id="water-cooled">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Water-Cooled Systems">
+                    <div class="service-card-body">
+                        <h3 class="service-title">Water-Cooled Systems</h3>
+                        <p class="service-desc">Chilled water distribution, plant-room heat exchangers, and low-GWP recirculating systems engineered for dense IT equipment racks and large commercial footprints.</p>
+                        <a href="#contact" class="btn btn-compact" style="margin-top: 1rem; display: inline-block;">Inquire</a>
                     </div>
-                    <h3 class="service-title">Residential Installation</h3>
-                    <p class="service-desc">Precision-engineered residential systems offering whisper-quiet operation and perfect temperature control for your home.</p>
                 </div>
 
-                <!-- Service Card 3 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="3"></circle>
-                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                        </svg>
+                <div class="service-card" id="recirculating">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Internal Recirculating">
+                    <div class="service-card-body">
+                        <h3 class="service-title">Internal Recirculating</h3>
+                        <p class="service-desc">Filtered recirculating indoor air handlers with active dehumidification and particulate filtration for sensitive manufacturing and tech environments.</p>
+                        <a href="#contact" class="btn btn-compact" style="margin-top: 1rem; display: inline-block;">Inquire</a>
                     </div>
-                    <h3 class="service-title">Smart Maintenance</h3>
-                    <p class="service-desc">Proactive, tech-driven maintenance plans that prevent downtime, optimize energy usage, and extend equipment lifespan.</p>
+                </div>
+
+                <div class="service-card" id="portable">
+                    <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Portable Units">
+                    <div class="service-card-body">
+                        <h3 class="service-title">Portable Units</h3>
+                        <p class="service-desc">Heavy-duty roll-in spot coolers for planned maintenance, emergency hot-spots, and temporary server room outages.</p>
+                        <a href="#contact" class="btn btn-compact" style="margin-top: 1rem; display: inline-block;">Inquire</a>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="text-align: center; margin-bottom: 2rem; color: var(--color-slate-dark);">Building & Access Systems</h3>
+            <div class="services-grid" style="margin-top: 0;">
+                <div class="service-card" id="door-access">
+                    <img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80" alt="Door Access">
+                    <div class="service-card-body">
+                        <h3 class="service-title">Door Access</h3>
+                        <p class="service-desc">IP-connected biometric, RFID, and encrypted keypad door access systems with central management and audit logs.</p>
+                        <a href="#contact" class="btn btn-compact" style="margin-top: 1rem; display: inline-block;">Inquire</a>
+                    </div>
+                </div>
+
+                <div class="service-card" id="telecoms">
+                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80" alt="Telecoms Upgrades">
+                    <div class="service-card-body">
+                        <h3 class="service-title">Telecoms Upgrades</h3>
+                        <p class="service-desc">Enterprise structured cabling (Cat6A / Fibre), rack consolidation, VoIP transitions, and network closet cleanups.</p>
+                        <a href="#contact" class="btn btn-compact" style="margin-top: 1rem; display: inline-block;">Inquire</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -155,40 +196,43 @@
             <h2 class="section-title">Request a Free Quote</h2>
 
             <div class="contact-wrapper">
-                <form class="contact-form" action="#" method="POST">
+                <form class="contact-form" action="https://formspree.io/f/mbgljpyb" method="POST">
+                    <input type="hidden" name="_next" value="/#contact-thanks">
+                    <input type="hidden" name="_subject" value="New CC Systems Web Inquiry">
+
                     <div class="form-group">
                         <label for="name" class="form-label">Full Name</label>
-                        <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required>
+                        <input type="text" id="name" name="name" class="form-input form-control" placeholder="Your Name" required>
                     </div>
 
                     <div class="form-group-row">
                         <div class="form-group">
                             <label for="email" class="form-label">Email Address</label>
-                            <input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required>
+                            <input type="email" id="email" name="_replyto" class="form-input form-control" placeholder="you@company.com" required>
                         </div>
                         <div class="form-group">
                             <label for="phone" class="form-label">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="(555) 123-4567" required>
+                            <input type="tel" id="phone" name="phone" class="form-input form-control" placeholder="07xxx xxxxxx">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="service" class="form-label">Service Required</label>
-                        <select id="service" name="service" class="form-input" required>
-                            <option value="" disabled selected>Select a service...</option>
-                            <option value="commercial">Commercial HVAC</option>
-                            <option value="residential">Residential Installation</option>
-                            <option value="maintenance">Smart Maintenance</option>
-                            <option value="emergency">Emergency Repair</option>
+                        <label for="interest" class="form-label">Service Interest</label>
+                        <select id="interest" name="interest" class="form-input form-select">
+                            <option value="Split Systems">Cooling: Split Systems</option>
+                            <option value="Water-Cooled">Cooling: Water-Cooled / Internal Recirculating</option>
+                            <option value="Door Access">Building: Door Access Systems</option>
+                            <option value="Telecoms">Building: Telecoms Upgrades</option>
+                            <option value="General Inquiry">Other / General Inquiry</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="message" class="form-label">Project Details / Message</label>
-                        <textarea id="message" name="message" class="form-input" rows="5" placeholder="Tell us about your climate control needs..." required></textarea>
+                        <textarea id="message" name="message" class="form-input form-control" rows="4" placeholder="Tell us about your requirements..." required></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-submit">Send Message</button>
+                    <button type="submit" class="btn btn-submit btn-compact" style="background-color: #0284c7; margin-top: 1rem;">Send Message</button>
                 </form>
             </div>
         </div>
