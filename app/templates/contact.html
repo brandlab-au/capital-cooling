@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us | Capital Cooling Solutions{% endblock %}
+
+{% block content %}
+<div style="margin-top: 80px;"></div>
+<section class="contact section-padding" id="contact">
+    <div class="container">
+        <h2 class="section-title">Request a Free Quote</h2>
+        {% include "partials/_contact_form.html" %}
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Parse URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category');
+        const brand = urlParams.get('brand');
+        const capacity = urlParams.get('capacity');
+        const heads = urlParams.get('heads');
+        const estPrice = urlParams.get('est_price');
+        const system = urlParams.get('system');
+        const tier = urlParams.get('tier');
+
+        // References to form fields
+        const interestSelect = document.getElementById('interest');
+        const subjectInput = document.getElementById('contact_subject');
+        const messageTextarea = document.getElementById('message');
+
+        if (category) {
+            // Auto-select the interest dropdown
+            let interestValue = "General Inquiry";
+            if (category === 'split-system') interestValue = "Split Systems";
+            else if (category === 'multi-split') interestValue = "Multi-Split Systems";
+            else if (category === 'commercial-systems') interestValue = "Commercial Systems";
+            else if (category === 'portable-units') interestValue = "Portable Units";
+
+            for (let i = 0; i < interestSelect.options.length; i++) {
+                if (interestSelect.options[i].value === interestValue) {
+                    interestSelect.selectedIndex = i;
+                    break;
+                }
+            }
+
+            // Construct prepopulated subject and message
+            let subject = "New Quote Request: " + interestValue;
+            let message = "";
+
+            if (category === 'split-system') {
+                const headText = heads === '1' ? '1 Head' : `${heads} Heads`;
+                message = `Hello, I am interested in getting a site survey and quote for the ${brand} Split System (${capacity}, ${headText}) priced at approximately £${parseFloat(estPrice).toLocaleString()}. Please contact me to schedule a measurement.`;
+                subject = `Quote Request: ${brand} Split System`;
+            } else if (category === 'multi-split') {
+                message = `Hello, I am interested in getting a quote for the ${tier} Multi-Split System (${system}) priced at approximately £${parseFloat(estPrice).toLocaleString()}. Please contact me for further details.`;
+                subject = `Quote Request: ${tier} Multi-Split System`;
+            } else if (category === 'commercial-systems' || category === 'portable-units') {
+                const systemName = system || tier; // Fallback
+                message = `Hello, I am interested in getting a quote for the ${systemName} priced at approximately £${parseFloat(estPrice).toLocaleString()}. Please contact me for further details.`;
+                subject = `Quote Request: ${systemName}`;
+            }
+
+            // Set the values
+            if (message) {
+                messageTextarea.value = message;
+            }
+            if (subject) {
+                subjectInput.value = subject;
+            }
+        }
+    });
+</script>
+{% endblock %}

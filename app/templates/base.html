@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Capital Cooling Solutions | Premium Climate Control{% endblock %}</title>
+    <!-- Google Fonts: Inter for clean, modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <!-- Logo -->
+            <a href="/" class="logo">
+                <span class="logo-accent">CCS</span>
+                <span class="logo-text">CC Systems</span>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="nav" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Cooling Systems ▼</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/services/split-systems" class="dropdown-item">Split Systems</a></li>
+                            <li><a href="/services/multi-split" class="dropdown-item">Multi-Split Systems</a></li>
+                            <li><a href="/services/commercial-systems" class="dropdown-item">Commercial Systems</a></li>
+                            <li><a href="/services/portable-units" class="dropdown-item">Portable Units</a></li>
+                            <li><a href="/#water-cooled" class="dropdown-item">Water-Cooled</a></li>
+                            <li><a href="/#recirculating" class="dropdown-item">Internal Recirculating</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Building & Access Systems ▼</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/#door-access" class="dropdown-item">Door Access</a></li>
+                            <li><a href="/#telecoms" class="dropdown-item">Telecoms Upgrades</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="/#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="/#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Far-Right Action Cluster -->
+            <div class="header-actions desktop-only">
+                <a href="/#contact" class="btn btn-compact">Call</a>
+                {% if 'user' in session %}
+                    <a href="/logout" class="btn btn-compact btn-dark">Logout</a>
+                {% else %}
+                    <a href="/login" class="btn btn-compact btn-dark">Portal Login</a>
+                {% endif %}
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <div class="menu-toggle" id="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo footer-logo">
+                        <span class="logo-accent">CCS</span>
+                        <span class="logo-text" style="color: white;">Capital Cooling Solutions</span>
+                    </a>
+                    <p class="footer-text">Precision climate control for modern commercial and residential spaces.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/#services">Services</a></li>
+                        <li><a href="/#about">About Us</a></li>
+                        <li><a href="/#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Contact Info</h4>
+                    <ul class="footer-links">
+                        <li>07999 416163</li>
+                        <li>info@capitalcoolingsolutions.com</li>
+                        <li>140 Edgware Road<br>W2</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Capital Cooling Solutions. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('header');
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            // 1. Sticky Header Scroll Effect
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // 2. Mobile Menu Toggle
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // 3. Close mobile menu on link click
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // 4. Smooth Scrolling (Fallback/Enhancement for older browsers)
+            // Note: html { scroll-behavior: smooth; } handles most modern browsers natively
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+
+                    // Only smooth scroll if we are on the homepage, or if the target element exists
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        const headerOffset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    } else if (window.location.pathname !== '/') {
+                        // Let the browser handle navigating to /#hash
+                        window.location.href = '/' + targetId;
+                    }
+                });
+            });
+        });
+    </script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

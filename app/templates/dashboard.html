@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capital Cooling - Dashboard</title>
-    <!-- Google Fonts: Inter for clean, modern typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+{% extends "base.html" %}
+
+{% block title %}Capital Cooling - Dashboard{% endblock %}
+
+{% block extra_head %}
     <style>
         /* Dashboard specific overrides if needed, otherwise rely on style.css */
         body {
@@ -130,29 +123,10 @@
             margin-top: 5px;
         }
     </style>
-</head>
-<body>
+{% endblock %}
 
-    <!-- Header & Navigation -->
-    <header class="header" id="header">
-        <div class="container header-container">
-            <!-- Logo -->
-            <a href="/" class="logo">
-                <span class="logo-accent">CCS</span>
-                <span class="logo-text">Capital Cooling Solutions</span>
-            </a>
-
-            <!-- Desktop Nav -->
-            <nav class="nav desktop-only">
-                <ul class="nav-list">
-                    <li><a href="/" class="nav-link">Home</a></li>
-                    <li><a href="{{ url_for('dashboard') }}" class="nav-link" style="color: var(--color-ice-blue);">Dashboard</a></li>
-                    <li><a href="{{ url_for('logout') }}" class="nav-link">Logout</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
+{% block content %}
+    <div style="margin-top: 80px;"></div> <!-- Spacer for fixed header -->
     <div class="header-dash">
         <h1>Capital Cooling Control Panel</h1>
     </div>
@@ -247,5 +221,4 @@
         setInterval(fetchTelemetry, 2000);
         fetchTelemetry(); // initial fetch
     </script>
-</body>
-</html>
+{% endblock %}

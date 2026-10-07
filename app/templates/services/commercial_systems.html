@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Commercial Systems | Capital Cooling Solutions{% endblock %}
+
+{% block content %}
+<div style="margin-top: 80px;"></div>
+
+<section class="section-padding">
+    <div class="container">
+        <h2 class="section-title" style="text-align: left;">Commercial Systems</h2>
+        <p class="service-desc" style="max-width: 800px; margin-bottom: 3rem;">
+            Under-ceiling cassettes, ducted concealed units, and VRF/VRV systems designed for large-scale commercial footprints, open-plan offices, and retail spaces.
+        </p>
+
+        <div class="services-grid" style="margin-top: 0;">
+            {% for tier, price in pricing_data.commercial_systems.items() %}
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Commercial System">
+                <div class="service-card-body">
+                    <h3 class="service-title" style="font-size: 1.2rem; min-height: 3rem;">{{ tier }}</h3>
+                    <div style="font-size: 1.5rem; font-weight: bold; color: var(--color-ice-blue); margin: 1rem 0;">
+                        £{{ "{:,.0f}".format(price) }}
+                    </div>
+                    <p class="service-desc" style="font-size: 0.9rem;">Price excludes custom pipe runs and advanced building management system integrations.</p>
+                    <a href="/contact?category=commercial-systems&tier={{ tier|urlencode }}&est_price={{ price }}" class="btn btn-compact" style="width: 100%; text-align: center; display: block; box-sizing: border-box;">Enquire Now</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

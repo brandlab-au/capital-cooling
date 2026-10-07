@@ -1,0 +1,43 @@
+<div class="contact-wrapper">
+    <form class="contact-form" action="https://formspree.io/f/mbgljpyb" method="POST">
+        <input type="hidden" name="_next" value="/#contact-thanks">
+        <input type="hidden" name="_subject" id="contact_subject" value="New CC Systems Web Inquiry">
+
+        <div class="form-group">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" id="name" name="name" class="form-input form-control" placeholder="Your Name" required>
+        </div>
+
+        <div class="form-group-row">
+            <div class="form-group">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" id="email" name="_replyto" class="form-input form-control" placeholder="you@company.com" required>
+            </div>
+            <div class="form-group">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="tel" id="phone" name="phone" class="form-input form-control" placeholder="07xxx xxxxxx">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="interest" class="form-label">Service Interest</label>
+            <select id="interest" name="interest" class="form-input form-select">
+                <option value="Split Systems">Cooling: Split Systems</option>
+                <option value="Multi-Split Systems">Cooling: Multi-Split Systems</option>
+                <option value="Commercial Systems">Cooling: Commercial Systems</option>
+                <option value="Portable Units">Cooling: Portable Units</option>
+                <option value="Water-Cooled">Cooling: Water-Cooled / Internal Recirculating</option>
+                <option value="Door Access">Building: Door Access Systems</option>
+                <option value="Telecoms">Building: Telecoms Upgrades</option>
+                <option value="General Inquiry">Other / General Inquiry</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="message" class="form-label">Project Details / Message</label>
+            <textarea id="message" name="message" class="form-input form-control" rows="4" placeholder="Tell us about your requirements..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-submit btn-compact" style="background-color: #0284c7; margin-top: 1rem;">Send Message</button>
+    </form>
+</div>
