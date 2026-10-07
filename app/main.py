@@ -5,7 +5,10 @@ from functools import wraps
 from flask import Flask, render_template, jsonify, request, session, redirect, url_for, flash
 import paho.mqtt.client as mqtt
 
-from pricing_config import PRICING_DATA
+try:
+    from app.pricing_config import PRICING_DATA
+except ModuleNotFoundError:
+    from pricing_config import PRICING_DATA
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'super-secret-default-key')
