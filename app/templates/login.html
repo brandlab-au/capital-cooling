@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capital Cooling Solutions | Portal Login</title>
-    <!-- Google Fonts: Inter for clean, modern typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+{% extends "base.html" %}
+
+{% block title %}CC Systems | Admin Portal Login{% endblock %}
+
+{% block extra_head %}
     <style>
         .login-wrapper {
             min-height: 100vh;
@@ -83,9 +76,9 @@
             text-decoration: underline;
         }
     </style>
-</head>
-<body>
+{% endblock %}
 
+{% block content %}
     <div class="login-wrapper">
         <div class="login-card">
             <!-- Logo -->
@@ -125,6 +118,4 @@
             <a href="/" class="back-link">← Back to Homepage</a>
         </div>
     </div>
-
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Portable & Monobloc Units | Capital Cooling Solutions{% endblock %}
+
+{% block content %}
+<div style="margin-top: 80px;"></div>
+
+<section class="section-padding">
+    <div class="container">
+        <h2 class="section-title" style="text-align: left;">Portable / Monobloc Air Conditioning</h2>
+        <p class="service-desc" style="max-width: 800px; margin-bottom: 3rem;">
+            Flexible cooling solutions where traditional external condensers are not possible. From temporary spot coolers to permanent no-outdoor-unit wall systems.
+        </p>
+
+        <div class="services-grid" style="margin-top: 0;">
+            {% for tier, price in pricing_data.portable_units.items() %}
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Portable Unit">
+                <div class="service-card-body">
+                    <h3 class="service-title" style="font-size: 1.1rem; min-height: 4rem;">{{ tier }}</h3>
+                    <div style="font-size: 1.5rem; font-weight: bold; color: var(--color-ice-blue); margin: 1rem 0;">
+                        £{{ "{:,.0f}".format(price) }}
+                    </div>
+                    <a href="/contact?category=portable-units&tier={{ tier|urlencode }}&est_price={{ price }}" class="btn btn-compact" style="width: 100%; text-align: center; display: block; box-sizing: border-box;">Enquire Now</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

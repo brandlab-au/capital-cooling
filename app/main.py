@@ -5,6 +5,8 @@ from functools import wraps
 from flask import Flask, render_template, jsonify, request, session, redirect, url_for, flash
 import paho.mqtt.client as mqtt
 
+from pricing_config import PRICING_DATA
+
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'super-secret-default-key')
 
@@ -77,6 +79,26 @@ def login_required(f):
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+@app.route('/services/split-systems')
+def split_systems():
+    return render_template('services/split_systems.html', pricing_data=PRICING_DATA)
+
+@app.route('/services/multi-split')
+def multi_split():
+    return render_template('services/multi_split.html', pricing_data=PRICING_DATA)
+
+@app.route('/services/commercial-systems')
+def commercial_systems():
+    return render_template('services/commercial_systems.html', pricing_data=PRICING_DATA)
+
+@app.route('/services/portable-units')
+def portable_units():
+    return render_template('services/portable_units.html', pricing_data=PRICING_DATA)
 
 @app.route('/cooling/<path:subpath>')
 def cooling(subpath):

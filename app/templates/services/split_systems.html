@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+
+{% block title %}Split Systems | Capital Cooling Solutions{% endblock %}
+
+{% block extra_head %}
+<style>
+    .configurator-wrapper {
+        background: var(--color-bg-light);
+        padding: 3rem 0;
+    }
+    .configurator-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    @media (min-width: 768px) {
+        .configurator-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+    .config-controls {
+        background: var(--color-white);
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    .product-display {
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    .product-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        min-height: 400px;
+    }
+    .product-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(15, 23, 42, 0.85); /* Slate Dark semi-transparent */
+        color: white;
+        padding: 1.5rem;
+    }
+    .spec-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    .spec-item {
+        font-size: 0.9rem;
+    }
+    .spec-value {
+        font-weight: bold;
+        color: var(--color-ice-blue);
+    }
+    .price-display {
+        font-size: 2rem;
+        font-weight: 800;
+        margin-top: 1.5rem;
+        color: white;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div style="margin-top: 80px;"></div>
+
+<section class="section-padding">
+    <div class="container">
+        <h2 class="section-title" style="text-align: left;">Standard High-Wall Split Systems</h2>
+        <p class="service-desc" style="max-width: 800px; margin-bottom: 2rem;">
+            Configure your ideal high-wall split system. Choose your preferred brand tier, cooling capacity, and configuration to instantly see an estimated price.
+        </p>
+
+        <div class="configurator-wrapper">
+            <div class="configurator-grid">
+
+                <!-- Controls -->
+                <div class="config-controls">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--color-slate-dark);">System Configurator</h3>
+
+                    <div class="form-group">
+                        <label for="tier-select" class="form-label">1. Tier / Brand</label>
+                        <select id="tier-select" class="form-input form-select">
+                            <option value="Economy">Economy (Midea / AUX / electriQ)</option>
+                            <option value="Mid-Range" selected>Mid-Range (Panasonic / Fujitsu / Toshiba)</option>
+                            <option value="Premium">Premium (Daikin / Mitsubishi Electric)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="capacity-select" class="form-label">2. Capacity (BTU)</label>
+                        <select id="capacity-select" class="form-input form-select">
+                            <option value="9000">9,000 BTU [Small room / 20m²]</option>
+                            <option value="12000" selected>12,000 BTU [Standard bedroom / 30m²]</option>
+                            <option value="18000">18,000 BTU [Master suite / 45m²]</option>
+                            <option value="24000">24,000 BTU [Open plan lounge / 65m²]</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="heads-select" class="form-label">3. Configuration / Indoor Heads</label>
+                        <select id="heads-select" class="form-input form-select">
+                            <option value="1" selected>Single Split (1 Head)</option>
+                            <option value="2">Dual Split (2 Heads)</option>
+                            <option value="3">Tri Split (3 Heads)</option>
+                            <option value="4">Quad Split (4 Heads)</option>
+                        </select>
+                    </div>
+
+                    <button id="enquire-btn" class="btn btn-hero" style="width: 100%; margin-top: 1rem;">Enquire About This Setup</button>
+                </div>
+
+                <!-- Product Display Card -->
+                <div class="product-display">
+                    <img id="product-img" src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80" alt="Split System" class="product-image">
+                    <div class="product-overlay">
+                        <h3 id="display-brand-tier" style="margin: 0; font-size: 1.4rem;">Mid-Range Split System</h3>
+                        <p id="display-capacity-heads" style="margin: 5px 0 0 0; color: #cbd5e1;">12,000 BTU | Single Split</p>
+
+                        <div class="spec-grid">
+                            <div class="spec-item">Energy Rating:<br><span class="spec-value">A++ / A+++</span></div>
+                            <div class="spec-item">Sound dB:<br><span class="spec-value">Ultra-quiet 19dB–22dB</span></div>
+                            <div class="spec-item">Technology:<br><span class="spec-value">Inverter Heat Pump</span></div>
+                            <div class="spec-item">Warranty:<br><span class="spec-value">5-Year Manufacturer</span></div>
+                        </div>
+
+                        <div class="price-display">
+                            From <span id="display-price">£1,080.00</span>
+                            <span style="font-size: 0.8rem; font-weight: normal; display: block; color: #cbd5e1;">(Excl. custom pipe runs)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<!-- Inject Pricing JSON safely -->
+<script>
+    const pricingData = {{ pricing_data | tojson }};
+    document.addEventListener('DOMContentLoaded', () => {
+        const tierSelect = document.getElementById('tier-select');
+        const capacitySelect = document.getElementById('capacity-select');
+        const headsSelect = document.getElementById('heads-select');
+
+        const displayBrandTier = document.getElementById('display-brand-tier');
+        const displayCapacityHeads = document.getElementById('display-capacity-heads');
+        const displayPrice = document.getElementById('display-price');
+        const productImg = document.getElementById('product-img');
+        const enquireBtn = document.getElementById('enquire-btn');
+
+        let currentPrice = 0;
+
+        function updateConfigurator() {
+            const tier = tierSelect.value;
+            const capacity = capacitySelect.value;
+            const heads = parseInt(headsSelect.value);
+
+            // Fetch pricing data for split systems
+            const tierData = pricingData.split_systems[tier];
+
+            // Base price for a single head
+            let basePrice = tierData.capacities[capacity];
+
+            // Simple multiplier logic for multiple heads (if configured this way for split systems)
+            // Note: True multi-split has its own page, but for this configurator we can just multiply
+            // the single unit price by the number of heads for a rough estimate if they select multiple.
+            let totalPrice = basePrice * heads;
+            currentPrice = totalPrice;
+
+            // Update UI
+            displayBrandTier.innerText = `${tier} Tier (${tierData.brands})`;
+            const headText = heads === 1 ? 'Single Split' : `${heads} Heads`;
+            displayCapacityHeads.innerText = `${parseInt(capacity).toLocaleString()} BTU | ${headText}`;
+            displayPrice.innerText = `£${totalPrice.toLocaleString()}.00`;
+
+            // Image could change based on tier if needed
+            productImg.src = tierData.image;
+        }
+
+        // Event Listeners
+        tierSelect.addEventListener('change', updateConfigurator);
+        capacitySelect.addEventListener('change', updateConfigurator);
+        headsSelect.addEventListener('change', updateConfigurator);
+
+        // Enquire Button action
+        enquireBtn.addEventListener('click', () => {
+            const tier = tierSelect.value;
+            const capacity = capacitySelect.value;
+            const heads = headsSelect.value;
+            const brand = tier === 'Economy' ? 'Economy Tier' : (tier === 'Mid-Range' ? 'Mid-Range Tier' : 'Premium Tier');
+
+            const url = `/contact?category=split-system&brand=${encodeURIComponent(brand)}&capacity=${capacity}BTU&heads=${heads}&est_price=${currentPrice}`;
+            window.location.href = url;
+        });
+
+        // Initialize
+        updateConfigurator();
+    });
+</script>
+{% endblock %}
